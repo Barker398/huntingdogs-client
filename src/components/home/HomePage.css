@@ -1,0 +1,21 @@
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+    width: 40%;
+    
+}
+
+h4 {
+    display: flex;
+    justify-content: center;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
