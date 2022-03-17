@@ -7,10 +7,16 @@ export const KennelProvider = () => {
     cosnt [kennels, setKennels] = useState([]);
 
     const getKennels = () => {
-        return fetch("http://localhost:8000/kennels"), {
-            headers: {
-                
-            }
+        return fetch("http://localhost:8000/kennels")
+        .then(res => res.json())
+        .then(setKennels)
         }
-    }
+        
+    return (
+        <KennelContext.Provider value={{
+            kennels, getKennels, setKennels
+        }}>
+            
+        </KennelContext.Provider>
+    )
 }
