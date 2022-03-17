@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { Link, useHistory } from "react-router-dom"
-import "./Auth.css"
+import "./Login.css"
 
 
 export const Login = () => {
@@ -26,8 +26,8 @@ export const Login = () => {
             .then(res => res.json())
             .then(res => {
                 if ("valid" in res && res.valid && "token" in res) {
-                    localStorage.setItem("dd_token", res.token)
-                    history.push("/")
+                    localStorage.setItem("HuntingDogs_token", res.token)
+                    history.push("/home")
                 }
                 else {
                     invalidDialog.current.showModal()
@@ -46,8 +46,8 @@ export const Login = () => {
                     <h1>Hunting Dogs</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
-                        <label htmlFor="inputUsername"> Username address </label>
-                        <input ref={username} type="username" id="username" className="form-control" placeholder="Username address" required autoFocus />
+                        <label htmlFor="inputUsername"> Username </label>
+                        <input ref={username} type="username" id="username" className="form-control" placeholder="Username" required autoFocus />
                     </fieldset>
                     <fieldset>
                         <label htmlFor="inputPassword"> Password </label>
