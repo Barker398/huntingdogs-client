@@ -4,17 +4,21 @@ import React, { createContext, useState } from "react";
 export const KennelContext = createContext();
 
 export const KennelProvider = () => {
-    cosnt [kennels, setKennels] = useState([]);
+    const [kennels, setKennels] = useState([]);
 
     const getKennels = () => {
-        return fetch("http://localhost:8000/kennels")
-        .then(res => res.json())
-        .then(setKennels)
-        }
+        return fetch("http://localhost:8000/kennels", {
+            headers: {
+                Authorization: `Token ${localStorage.getItem("HuntingDogs_token")}`,
+            },
+        })
+            .then((response) => response.json())
+            .then(setKennels);
+    };    
         
     return (
         <KennelContext.Provider value={{
-            kennels, getKennels, setKennels
+            kennels, getKennels
         }}>
             
         </KennelContext.Provider>
