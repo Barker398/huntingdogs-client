@@ -4,17 +4,18 @@ import { ApplicationViews } from "./ApplicationViews"
 import { Login } from "./components/auth/Login"
 import { Register } from "./components/auth/Register"
 import { NavBar } from "./components/nav/NavBar"
+import "./HuntingDogs.css"
 
 export const HuntingDogs = () => (
     <>
       <Route render={() => {
         if (localStorage.getItem("HuntingDogs_token")) {
-          return <>
-            <Route>
+          return (
+          <>
               <NavBar />
               <ApplicationViews />
-            </Route>
           </>
+          );
         } else {
           return <Redirect to="/login" />
         }

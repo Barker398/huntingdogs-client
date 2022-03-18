@@ -8,15 +8,19 @@ import { KennelProvider } from "./components/kennel/KennelProvider"
 export const ApplicationViews = () => {
     return (
         <>
-        
-            <Route exact path="/home">
-                <HomePage />
-            </Route>
+            <main
+            style={{
+            margin: "5rem 2rem"
+            }}>
             <KennelProvider>
-            <Route path="/kennel">
-                <KennelList />
-            </Route> 
+                <Route path="/home">
+                    <HomePage />
+                </Route>
+                <Route path="/kennel">
+                    <KennelList />
+                </Route> 
             </KennelProvider>
+            </main>
         </>
     )
 }
