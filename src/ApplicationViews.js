@@ -16,7 +16,7 @@ export const ApplicationViews = () => {
                 <Route path="/home">
                     <HomePage />
                 </Route>
-                <Route path="/kennel">
+                <Route path="/kennels">
                     <KennelList />
                 </Route> 
             </KennelProvider>
