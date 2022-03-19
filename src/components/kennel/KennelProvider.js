@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 
 export const KennelContext = createContext();
 
-export const KennelProvider = () => {
+export const KennelProvider = (props) => {
     const [kennels, setKennels] = useState([]);
 
     const getKennels = () => {
@@ -20,7 +20,7 @@ export const KennelProvider = () => {
         <KennelContext.Provider value={{
             kennels, getKennels
         }}>
-            
+            {props.children}
         </KennelContext.Provider>
     )
 }
