@@ -15,7 +15,7 @@ export const NavBar = () => {
             </li>
 
             <li className="navbar__item">
-                <Link className="navbar-link" to="/profile">Profile</Link>
+                <Link className="navbar-link" to="/profiles">Profile</Link>
             </li>
             {
                 (localStorage.getItem("HuntingDogs_token") !== null) ?

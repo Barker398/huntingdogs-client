@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 
 export const DogContext = createContext()
-export const DogProvider = () => {
+export const DogProvider = (props) => {
 
     const [dogs, setDogs] = useState([])
 
@@ -28,6 +28,16 @@ export const DogProvider = () => {
             .then(setFavorites);
     }
 
+    const getDogById = (id) => {
+        return fetch(`http://localhost:8000/dogs?id=${id}`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem("HuntingDogs_token")}`,
+            },
+        })
+            .then((response) => response.json())
+            .then(setDogs);
+    };
+
     const addDogFavorite = dogObj => {
         return fetch("http://localhost:8000/favorites", {
             method: "POST",
@@ -41,7 +51,7 @@ export const DogProvider = () => {
 
     return (
         <DogContext.Provider value={{
-            dogs, getDogs, favorites, setFavorites, addDogFavorite, getDogFavorites
+            dogs, getDogs, favorites, setFavorites, addDogFavorite, getDogFavorites, getDogById
         }}>
             {props.children}
         </DogContext.Provider>
