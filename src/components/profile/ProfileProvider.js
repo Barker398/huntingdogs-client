@@ -5,8 +5,8 @@ export const ProfileContext = createContext()
 export const ProfileProvider = (props) => {
     const [ profile, setProfile ] = useState([])
 
-    const getProfile = () => {
-        return fetch("http://localhost:8000/users", {
+    const getProfiles = () => {
+        return fetch("http://localhost:8000/profiles", {
             headers: {
                 Authorization: `Token ${localStorage.getItem("HuntingDogs_token")}`,
             },
@@ -15,21 +15,34 @@ export const ProfileProvider = (props) => {
         .then(setProfile);
     }
 
-    const editProfile = (user) => {
-        return fetch(`http://localhost:8000/users/${user}`, {
+    const updateProfile = (profile) => {
+        return fetch(`http://localhost:8000/profiles/${profile.id}`, {
             method: "PUT",
             headers: {
                 Authorization: `Token ${localStorage.getItem("HuntingDogs_token")}`,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(post)
+            body: JSON.stringify(profile)
         })
-            .then(getProfile)
+            .then(getProfiles)
+    }
+
+    const addProfileInfo = (profile) => {
+        return fetch("http://localhost:8000/profiles", {
+            method: "POST",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("HuntingDogs_token")}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(profile)
+        })
+        .then((response) => response.json())
+        .then(getProfiles);
     }
 
     return (
         <ProfileContext.Provider value={{
-            getProfile, profile, editProfile
+            getProfiles, profile, updateProfile, addProfileInfo
         }}>
             {props.children}
         </ProfileContext.Provider>

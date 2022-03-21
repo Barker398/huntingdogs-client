@@ -9,21 +9,21 @@ export const KennelList = () => {
 
     useEffect(() => {
         getKennels();
-    }, [getKennels]);
+    }, []);
 
     return (
         <article className="kennels">
             <h2>Kennels</h2>
             <section className="kennels">
                 {
-                    kennels.map(kennel => {
+                    kennels && kennels.map(k => {
                         return (
-                            <div className="kennel" key={`kennel--${kennel.id}`}>
-                                <img src={kennel.image_url} alt="images" class="center" />
-
-                                <Link to={`/kennels/detail/${kennel.id}`}>
-                                    {kennel.name}
+                            <div className="kennel" key={`kennel--${k.id}`}>
+                                <Link to={`/kennels/detail/${k.id}`}>
+                                    {k.name}
                                 </Link>
+
+                                <img src={k.image_url} alt="images" className="center" />
 
                             </div>
                         )

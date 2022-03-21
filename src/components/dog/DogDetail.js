@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
+import { useHistory, useParams } from "react-router-dom"
 import { DogContext } from "./DogProvider"
 
 
@@ -12,7 +13,7 @@ export const DogDetail = () => {
 
     const currentUser = parseInt(localStorage.getItem("HuntingDogs_user"));
 
-    // const { DogId } = useParams();
+    const { dogId } = useParams();
 
     const history = useHistory()
 
@@ -35,7 +36,7 @@ export const DogDetail = () => {
         } 
         )
         .then(() => {
-            history.push("/myProfile")
+            history.push("/Profile")
         })
         
     }
@@ -46,7 +47,7 @@ export const DogDetail = () => {
         <section className="dog">
             <h3 className="dog__name">{dog.name}</h3>       
             <div className="dog__name">Name: {dog.name}</div>
-            <img src={dogs.url} />
+            <img src={dogs.image_url} />
             <div className="dog__breed">Breed: {dog.breed}</div>
             <div className="dog__kennel">Kennel: {dog.kennel}</div>
             <button onClick={handleClickSaveFavorite}> favorites: </button>
