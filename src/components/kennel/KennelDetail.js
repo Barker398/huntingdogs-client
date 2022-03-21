@@ -20,10 +20,12 @@ export const KennelDetail = () => {
         getKennelById(kennelId)
     }, [])
 
-    const handleClickSaveFavorite = () => {
+    const handleClickSaveFavorite = (e) => {
+        const dogId = e.target.id
+        console.log(dogId)
         addDogFavorite({
-            dogId:dog.id,
-            userId:currentUser
+            dogId: dogId,
+            userId: currentUser
         } 
         )
         .then(() => {
@@ -34,25 +36,27 @@ export const KennelDetail = () => {
 
     return (<>
         <h2>Kennel</h2>
+        <h3 className="kennel__name">{kennel.name}</h3>
         {kennel && <section className="kennel">
-            <h3 className="kennel__name">{kennel.name}</h3>
+            {/* <h3 className="kennel__name">{kennel.name}</h3> */}
             <img src={kennel.image_url} alt="images" className="center" />
-
+            </section>}
             <h2>Dogs</h2>
             {kennel?.dogs?.map(dog => (
 
                 <section key={dog.id}>
-                    <div>{dog.name}
+                    <h3>{dog.name}</h3>
+                    <div>
                         <img src={dog.image_url} className="center" />
                         <span>{dog.breed}</span>
                         <span>{dog.trait}</span>
                     </div>
-                    <button onClick={handleClickSaveFavorite}> Favorite this Dog: </button>
+                    <button  className="center" id={dog.id} onClick={handleClickSaveFavorite}> Favorite this Dog: </button>
                 </section>
 
             ))}
             
-        </section>}
+        {/* </section>} */}
     </>)
 
 }

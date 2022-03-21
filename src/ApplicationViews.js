@@ -7,6 +7,7 @@ import { ProfilePage } from "./components/profile/ProfilePage"
 import { ProfileProvider } from "./components/profile/ProfileProvider"
 import { KennelDetail } from "./components/kennel/KennelDetail"
 import { DogProvider } from "./components/dog/DogProvider"
+import { ProfileForm } from "./components/profile/ProfileForm"
 
 export const ApplicationViews = () => {
     return (
@@ -29,6 +30,12 @@ export const ApplicationViews = () => {
                 </Route>
                 <Route exact path="/profiles">
                     <ProfilePage />
+                </Route>
+                <Route  path="/profiles/edit/:profileId(\d+)">
+                    <ProfileForm />
+                </Route>
+                <Route exact path="/profiles/create">
+                    <ProfileForm />
                 </Route>
                     </DogProvider>
                 </ProfileProvider>   

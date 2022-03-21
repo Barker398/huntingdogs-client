@@ -14,3 +14,15 @@ h4 {
     margin-right: auto;
     width: 50%;
 }
+.bg_image{
+    background-image: url('/home/sam_barker/workspace/huntingdogs-client/public/images/huntingdog.jpg');
+    background-size: cover;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 42px;
+    left: 0;
+    min-height: 100%;
+    min-width: 1024px;
+    
+  }

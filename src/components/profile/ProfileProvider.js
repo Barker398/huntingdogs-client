@@ -15,7 +15,7 @@ export const ProfileProvider = (props) => {
         .then(setProfile);
     }
 
-    const updateProfile = (profile) => {
+    const updateProfile = profile => {
         return fetch(`http://localhost:8000/profiles/${profile.id}`, {
             method: "PUT",
             headers: {
@@ -27,14 +27,14 @@ export const ProfileProvider = (props) => {
             .then(getProfiles)
     }
 
-    const addProfileInfo = (profile) => {
+    const addProfileInfo = profileObj => {
         return fetch("http://localhost:8000/profiles", {
             method: "POST",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("HuntingDogs_token")}`,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(profile)
+            body: JSON.stringify(profileObj)
         })
         .then((response) => response.json())
         .then(getProfiles);

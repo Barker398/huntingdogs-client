@@ -1,10 +1,20 @@
 .navbar {
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: left;
+    flex-wrap: inherit;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 7px;
+    background-color: cadetblue;
+    width: 95%;
 }
 
 .navbar__item {
     flex-basis: 20%;
     list-style-type: none;
+}
+
+button.nav {
+    background-color: orangered;
+    border: none;
+    padding: 6px;
 }
