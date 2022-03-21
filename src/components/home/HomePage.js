@@ -4,12 +4,9 @@ import "./HomePage.css"
 export const HomePage = () => {
     
     return (
-    <>
+      <div className="bg_image">
     <h2>Hunting Dogs</h2>
-    
-      <img src="images/hunting-dog.jpg" alt="images" className="center" />
-   
     <h4>"The right Dog for your Hunting Occasion! "</h4>
-    </>
+    </div>
     )
 }

@@ -3,3 +3,9 @@ img {
     width: 35%;
     
 }
+
+h3 {
+    display: flex;
+    justify-content: center;
+}
+

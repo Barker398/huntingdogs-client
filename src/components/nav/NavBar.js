@@ -20,7 +20,7 @@ export const NavBar = () => {
             {
                 (localStorage.getItem("HuntingDogs_token") !== null) ?
                     <li className="nav-item">
-                        <button className="nav-link fakeLink"
+                        <button className="nav"
                             onClick={() => {
                                 localStorage.removeItem("HuntingDogs_token")
                                 history.push({ pathname: "/login" })
