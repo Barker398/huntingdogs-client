@@ -29,7 +29,7 @@ export const ProfileProvider = (props) => {
 
     const addProfileInfo = profileObj => {
         return fetch("http://localhost:8000/profiles", {
-            method: "POST",
+            method: "PUT",
             headers: {
                 "Authorization": `Token ${localStorage.getItem("HuntingDogs_token")}`,
                 "Content-Type": "application/json"

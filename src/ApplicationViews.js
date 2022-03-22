@@ -8,38 +8,44 @@ import { ProfileProvider } from "./components/profile/ProfileProvider"
 import { KennelDetail } from "./components/kennel/KennelDetail"
 import { DogProvider } from "./components/dog/DogProvider"
 import { ProfileForm } from "./components/profile/ProfileForm"
+import { TraitProvider } from "./components/trait/TraitProvider"
+import { BreedProvider } from "./components/breed/BreedProvider"
 
 export const ApplicationViews = () => {
     return (
         <>
             <main
-            style={{
-            margin: "5rem 2rem"
-            }}>
-            <KennelProvider>
-                <ProfileProvider>
-                    <DogProvider>
-                <Route path="/home">
-                    <HomePage />
-                </Route>
-                <Route exact path="/kennels">
-                    <KennelList />
-                </Route>
-                <Route exact path="/kennels/detail/:kennelId(\d+)">
-                    <KennelDetail />
-                </Route>
-                <Route exact path="/profiles">
-                    <ProfilePage />
-                </Route>
-                <Route  path="/profiles/edit/:profileId(\d+)">
-                    <ProfileForm />
-                </Route>
-                <Route exact path="/profiles/create">
-                    <ProfileForm />
-                </Route>
-                    </DogProvider>
-                </ProfileProvider>   
-            </KennelProvider>
+                style={{
+                    margin: "5rem 2rem"
+                }}>
+                <KennelProvider>
+                    <ProfileProvider>
+                        <DogProvider>
+                            <TraitProvider>
+                                <BreedProvider>
+                                    <Route path="/home">
+                                        <HomePage />
+                                    </Route>
+                                    <Route exact path="/kennels">
+                                        <KennelList />
+                                    </Route>
+                                    <Route exact path="/kennels/detail/:kennelId(\d+)">
+                                        <KennelDetail />
+                                    </Route>
+                                    <Route exact path="/profiles">
+                                        <ProfilePage />
+                                    </Route>
+                                    <Route exact path="/profiles/edit/:profileId(\d+)">
+                                        <ProfileForm />
+                                    </Route>
+                                    <Route exact path="/profiles/create">
+                                        <ProfileForm />
+                                    </Route>
+                                </BreedProvider>
+                            </TraitProvider>
+                        </DogProvider>
+                    </ProfileProvider>
+                </KennelProvider>
             </main>
         </>
     )

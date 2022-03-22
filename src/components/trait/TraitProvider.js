@@ -13,12 +13,22 @@ export const TraitProvider = (props) => {
             },
         })
         .then((response) => response.json())
-        .then(setTraits)
+        .then(setTraits);
     };
+
+    const getTraitById = (id) => {
+        return fetch(`http://localhost:8000/traits?id=${id}`, {
+            headers: {
+                Authorization: `Token ${localStorage.getItem("HuntingDogs_token")}`,
+            },
+        })
+        .then((response) => response.json())
+        .then(setTraits);
+    }
 
     return (
         <TraitContext.Provider value={{
-            traits, getTraits
+            traits, getTraits, getTraitById
         }}>
         {props.children}
         </TraitContext.Provider>

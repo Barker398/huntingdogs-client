@@ -1,16 +1,16 @@
 import { useContext, useState, useEffect } from "react"
-import { useHistory, useLocation } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import { ProfileContext } from "./ProfileProvider"
 
 
 export const ProfileForm = () => {
-    const { getProfile, addProfileInfo, updateProfile } = useContext(ProfileContext)
+    const { profile, getProfile, updateProfile } = useContext(ProfileContext)
     const params = useParams();
     // const [isLoading, setIsLoading] = useState(true);
     const editMode = params.hasOwnProperty("profileId")
 
-    const [profile, setProfile] = useState({
+    const [_profile, setProfile] = useState({
         userId: 0,
         bio: "",
         address: "", 
@@ -20,14 +20,13 @@ export const ProfileForm = () => {
     useEffect(() => {
         if (editMode) {
             getProfile(parseInt(params.profileId))
-                .then(setProfile)
                 .then("useEffectProfile", profile)
         }
     }, [])
    
-    const query = new URLSearchParams(useLocation().search);
+    // const query = new URLSearchParams(useLocation().search);
 
-    const profileId = parseInt(query.get("profileId"))
+    // const profileId = parseInt(query.get("profileId"))
 
     const history = useHistory();
 
@@ -44,35 +43,35 @@ export const ProfileForm = () => {
     const handleSaveProfile = (event) => {
         event.preventDefault()
         
-        const userId = parseInt(localStorage.getItem("HuntingDogs_user"))
+        // const userId = parseInt(localStorage.getItem("HuntingDogs_user"))
 
         if (profile.id === 0){
             window.alert("Edit Profile Info")
         }
         else {
-            if (editMode) {
+           // if (editMode) {
                 updateProfile({
-                    id: parseInt(params.profileId),
-                    userId: profile.userId,
-                    bio: profile.bio,
-                    address: profile.address,
-                    phoneNumber: profile.phoneNumber
+                    id: parseInt(profile.id),
+                    userId: _profile.userId,
+                    bio: _profile.bio,
+                    address: _profile.address,
+                    phoneNumber: _profile.phoneNumber
                 })
                 .then(() => history.push(`/profiles/detail/${profile.userId}`))
-            }
+         //   }
 
-            else {
-                const newProfileInfo = {
-                    userId: userId,
-                    bio: profile.bio,
-                    address: profile.address,
-                    phoneNumber: profile.phoneNumber
-                }
-                addProfileInfo(newProfileInfo)
-                .then(() => {
-                    history.push(`/profiles/detail/${profileId}`)
-                })
-            }
+            // else {
+            //     const newProfileInfo = {
+            //         userId: userId,
+            //         bio: profile.bio,
+            //         address: profile.address,
+            //         phoneNumber: profile.phoneNumber
+            //     }
+            //     addProfileInfo(newProfileInfo)
+            //     .then(() => {
+            //         history.push(`/profiles/detail/${profileId}`)
+            //     })
+            // }
         }
     }
 
