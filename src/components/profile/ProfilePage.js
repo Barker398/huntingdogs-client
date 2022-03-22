@@ -20,7 +20,7 @@ export const ProfilePage = (props) => {
 
             <button onClick={
 
-                () => history.push(`/profiles/create?profileId=${props.profileId}`)
+                () => history.push(`/profiles/create?profileId=${profile.id}`)
             }>
                 Add a Profile Info Here!
             </button>
@@ -44,7 +44,7 @@ export const ProfilePage = (props) => {
             </section>
             <button onClick={() => {
                 history.push(`/profiles/edit/${profile.id}`)
-            }}>Edit Contact</button>
+            }}>Edit Profile Info</button>
 
         </>
     )
