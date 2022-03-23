@@ -31,7 +31,7 @@ export const ProfileProvider = (props) => {
         return fetch("http://localhost:8000/profiles", {
             method: "PUT",
             headers: {
-                "Authorization": `Token ${localStorage.getItem("HuntingDogs_token")}`,
+                Authorization: `Token ${localStorage.getItem("HuntingDogs_token")}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(profileObj)

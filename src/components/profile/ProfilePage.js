@@ -1,12 +1,10 @@
 import { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
-import { DogContext } from "../dog/DogProvider"
 import { ProfileContext } from "./ProfileProvider"
 
 
-export const ProfilePage = (props) => {
+export const ProfilePage = () => {
     const { profile, getProfiles } = useContext(ProfileContext)
-    const { favorites } = useContext(DogContext)
     const history = useHistory()
 
     useEffect(() => {
@@ -17,35 +15,35 @@ export const ProfilePage = (props) => {
     return (
         <>
             <h1>My Dogs</h1>
-
-            <button onClick={
-
-                () => history.push(`/profiles/create?profileId=${profile.id}`)
-            }>
-                Add a Profile Info Here!
-            </button>
             <section className="profile">
 
-                {favorites.length ?
+                {profile?.favorites?.length ?
 
-                    favorites.map(favDog => {
+                    profile.favorites.map(favDog => {
 
                         return (
-                            <section className="dog">
-                                <h3 className="dog__name">{favDog.dogs.name}</h3>
-                                <img src={favDog.dogs.image_url} alt="kennel image_url class=" center />
-                                <div className="dog__breed">Breed: {favDog.dogs.breed}</div>
-                                <div className="dog__kennel">Kennel: {favDog.dogs.kennel}</div>
+                            <section className="dog" key={favDog.id}>
+                                <h3 className="dog__name">{favDog.name}</h3>
+                                <img src={favDog.image_url} alt="kennel image_url class=" center />
+                                <div className="dog__breed">Breed: {favDog.breed.breed_type}</div>
+                                <div className="dog__kennel">Kennel: {favDog.kennel.name}</div>
                             </section>
 
                         )
                     })
                     : <p>No Favorites</p>}
             </section>
-            <button onClick={() => {
-                history.push(`/profiles/edit/${profile.id}`)
-            }}>Edit Profile Info</button>
-
+            <h3>Profile Information</h3>
+            <section className="profileInfo" key={profile.id}>
+                <div className="profile__bio">Bio: {profile.bio}</div>
+                <div className="profile__address">Address: {profile.address}</div>
+                <div className="profile__phoneNumber">Phone Number: {profile.phoneNumber}</div>
+            </section>
+            <button onClick={
+                () => history.push(`/profiles/create?profileId=${profile.id}`)
+            }>
+                Add a Profile Info Here!
+            </button>
         </>
     )
 }

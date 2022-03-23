@@ -2,41 +2,34 @@ import { useContext, useEffect } from "react"
 import { useParams, useHistory } from "react-router-dom"
 import { KennelContext } from "./KennelProvider"
 import { DogContext } from "../dog/DogProvider"
+import { ProfileContext } from "../profile/ProfileProvider"
 // import { TraitContext } from "../trait/TraitProvider"
 import "./KennelDetail.css"
 
 export const KennelDetail = () => {
 
+    const { profile, getProfiles, updateProfile } = useContext(ProfileContext)
     const { kennel, getKennelById } = useContext(KennelContext)
     // const { trait, getTraitById } = useContext(TraitContext)
     const { addDogFavorite } = useContext(DogContext)
 
     const { kennelId } = useParams();
-    // const { traitId } = useParams();
+   
 
-    const history = useHistory
+    const history = useHistory()
 
-    const currentUser = parseInt(localStorage.getItem("HuntingDogs_user"));
+    // const currentUser = parseInt(localStorage.getItem("HuntingDogs_user"));
 
     useEffect(() => {
         getKennelById(kennelId)
+        getProfiles()
     }, [])
 
-    // useEffect(() => {
-    //     getTraitById(traitId)
-    // }, [])
 
     const handleClickSaveFavorite = (e) => {
         const dogId = e.target.id
-        console.log(dogId)
-        addDogFavorite({
-            dogId: dogId,
-            userId: currentUser
-        }
-        )
-            .then(() => {
-                history.push("/Profiles")
-            })
+       addDogFavorite(dogId)
+    
 
     }
 

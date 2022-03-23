@@ -32,13 +32,13 @@ export const ApplicationViews = () => {
                                     <Route exact path="/kennels/detail/:kennelId(\d+)">
                                         <KennelDetail />
                                     </Route>
-                                    <Route exact path="/profiles">
+                                    <Route path="/profiles">
                                         <ProfilePage />
                                     </Route>
-                                    <Route exact path="/profiles/edit/:profileId(\d+)">
+                                    {/* <Route exact path="/profiles/edit/:profileId(\d+)">
                                         <ProfileForm />
-                                    </Route>
-                                    <Route exact path="/profiles/create">
+                                    </Route> */}
+                                    <Route path="/profiles/create">
                                         <ProfileForm />
                                     </Route>
                                 </BreedProvider>

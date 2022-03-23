@@ -19,7 +19,7 @@ export const DogProvider = (props) => {
     }
 
     const getDogFavorites = () => {
-        return fetch("http://localhost:8000/favorite", {
+        return fetch("http://localhost:8000/dogs", {
             headers: {
                 Authorization: `Token ${localStorage.getItem("HuntingDogs_token")}`,
             },
@@ -38,14 +38,13 @@ export const DogProvider = (props) => {
             .then(setDogs);
     };
 
-    const addDogFavorite = dogObj => {
-        return fetch("http://localhost:8000/favorite", {
+    const addDogFavorite = dogId => {
+        return fetch(`http://localhost:8000/dogs/${dogId}/favorite`, {
             method: "POST",
             headers: {
                 Authorization: `Token ${localStorage.getItem("HuntingDogs_token")}`,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(dogObj)
         })
         .then(getDogFavorites)
     }
