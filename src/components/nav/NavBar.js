@@ -9,7 +9,7 @@ export const NavBar = () => {
             <li className="navbar__item">
                 <Link className="nav-link" to="/home">Home</Link>
             </li>
-            
+
             <li className="navbar__item">
                 <Link className="navbar_link" to="/kennels">Kennels</Link>
             </li>
@@ -25,7 +25,7 @@ export const NavBar = () => {
                                 localStorage.removeItem("HuntingDogs_token")
                                 history.push({ pathname: "/login" })
                             }}
-                            >Logout</button>
+                        >Logout</button>
                     </li> :
                     <>
                         <li className="nav-item">
@@ -35,6 +35,7 @@ export const NavBar = () => {
                             <Link className="nav-link" to="/register">Register</Link>
                         </li>
                     </>
-            }        </ul>
+            }
+        </ul>
     )
 }

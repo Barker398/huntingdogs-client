@@ -3,9 +3,7 @@ import { createContext, useState } from "react";
 export const DogContext = createContext()
 
 export const DogProvider = (props) => {
-
     const [dogs, setDogs] = useState([])
-
     const [favorites, setFavorites] = useState([])
 
     const getDogs = () => {
@@ -46,12 +44,23 @@ export const DogProvider = (props) => {
                 "Content-Type": "application/json"
             },
         })
-        .then(getDogFavorites)
+            .then(getDogFavorites)
+    };
+
+    const removeDogFavorite = dogId => {
+        return fetch(`http://localhost:8000/dogs/${dogId}/favorite`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Token ${localStorage.getItem("HuntingDogs_token")}`,
+                "Content-Type": "application/json"
+            },
+        })
+            .then(getDogFavorites)
     }
 
     return (
         <DogContext.Provider value={{
-            dogs, getDogs, favorites, setFavorites, addDogFavorite, getDogFavorites, getDogById
+            dogs, getDogs, favorites, setFavorites, addDogFavorite, getDogFavorites, getDogById, removeDogFavorite
         }}>
             {props.children}
         </DogContext.Provider>

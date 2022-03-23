@@ -1,16 +1,21 @@
 import { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
+import { DogContext } from "../dog/DogProvider"
 import { ProfileContext } from "./ProfileProvider"
-
 
 export const ProfilePage = () => {
     const { profile, getProfiles } = useContext(ProfileContext)
+    const { removeDogFavorite } = useContext(DogContext)
     const history = useHistory()
 
     useEffect(() => {
         getProfiles()
     }, [])
 
+    const handleRemoval = (dogId) => {
+        removeDogFavorite(dogId)
+            .then(getProfiles)
+    }
 
     return (
         <>
@@ -27,8 +32,10 @@ export const ProfilePage = () => {
                                 <img src={favDog.image_url} alt="kennel image_url class=" center />
                                 <div className="dog__breed">Breed: {favDog.breed.breed_type}</div>
                                 <div className="dog__kennel">Kennel: {favDog.kennel.name}</div>
+                                <button onClick={() => handleRemoval(favDog.id)}>
+                                    Remove Favorite
+                                </button>
                             </section>
-
                         )
                     })
                     : <p>No Favorites</p>}
