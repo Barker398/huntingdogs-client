@@ -9,13 +9,13 @@ export const BreedProvider = (props) => {
     const getBreeds = () => {
         return fetch("http://localhost:8000/breeds", {
             headers: {
-                Authorization: `Token ${localStorage.getItem("HuntingDogs_token")}`,   
+                Authorization: `Token ${localStorage.getItem("HuntingDogs_token")}`,
             },
         })
-        .then((response) => response.json())
-        .then(setBreeds)
+            .then((response) => response.json())
+            .then(setBreeds)
     };
-    
+
     return (
         <BreedContext.Provider value={{
             breeds, getBreeds

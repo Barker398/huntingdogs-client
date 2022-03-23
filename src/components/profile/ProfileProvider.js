@@ -3,7 +3,7 @@ import React, { useState, createContext } from "react"
 export const ProfileContext = createContext()
 
 export const ProfileProvider = (props) => {
-    const [ profile, setProfile ] = useState([])
+    const [profile, setProfile] = useState([])
 
     const getProfiles = () => {
         return fetch("http://localhost:8000/profiles", {
@@ -11,8 +11,8 @@ export const ProfileProvider = (props) => {
                 Authorization: `Token ${localStorage.getItem("HuntingDogs_token")}`,
             },
         })
-        .then((response) => response.json())
-        .then(setProfile);
+            .then((response) => response.json())
+            .then(setProfile);
     }
 
     const updateProfile = profile => {
@@ -24,7 +24,7 @@ export const ProfileProvider = (props) => {
             },
             body: JSON.stringify(profile)
         })
-            .then(getProfiles)
+            .then(getProfiles);
     }
 
     const addProfileInfo = profileObj => {
@@ -36,8 +36,8 @@ export const ProfileProvider = (props) => {
             },
             body: JSON.stringify(profileObj)
         })
-        .then((response) => response.json())
-        .then(getProfiles);
+            .then((response) => response.json())
+            .then(getProfiles);
     }
 
     return (

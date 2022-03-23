@@ -5,7 +5,6 @@ import "./KennelList.css"
 
 export const KennelList = () => {
     const { kennels, getKennels } = useContext(KennelContext);
-  
 
     useEffect(() => {
         getKennels();
@@ -22,9 +21,7 @@ export const KennelList = () => {
                                 <Link to={`/kennels/detail/${k.id}`}>
                                     {k.name}
                                 </Link>
-
                                 <img src={k.image_url} alt="images" className="center" />
-
                             </div>
                         )
                     })

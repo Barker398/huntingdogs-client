@@ -35,9 +35,6 @@ export const ApplicationViews = () => {
                                     <Route path="/profiles">
                                         <ProfilePage />
                                     </Route>
-                                    {/* <Route exact path="/profiles/edit/:profileId(\d+)">
-                                        <ProfileForm />
-                                    </Route> */}
                                     <Route path="/profiles/create">
                                         <ProfileForm />
                                     </Route>

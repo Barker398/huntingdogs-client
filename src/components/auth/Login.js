@@ -2,7 +2,6 @@ import React, { useRef } from "react"
 import { Link, useHistory } from "react-router-dom"
 import "./Login.css"
 
-
 export const Login = () => {
     const username = useRef()
     const password = useRef()
