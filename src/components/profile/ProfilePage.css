@@ -1,0 +1,18 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+div.dog__breed {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+div.dog__kennel {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    width: -webkit-fill-available;
+}
