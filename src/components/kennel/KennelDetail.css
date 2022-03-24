@@ -1,11 +1,12 @@
 img {
     display: flex;
-    width: 35%;
+    width: 50%;
     
 }
 
 h3 {
     display: flex;
     justify-content: center;
+    text-transform: uppercase;
 }
 

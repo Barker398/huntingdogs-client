@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { DogContext } from "../dog/DogProvider"
 import { ProfileContext } from "./ProfileProvider"
+import "./ProfilePage.css"
 
 export const ProfilePage = () => {
     const { profile, getProfiles } = useContext(ProfileContext)
@@ -29,7 +30,7 @@ export const ProfilePage = () => {
                         return (
                             <section className="dog" key={favDog.id}>
                                 <h3 className="dog__name">{favDog.name}</h3>
-                                <img src={favDog.image_url} alt="kennel image_url class=" center />
+                                <img src={favDog.image_url} alt="kennel image_url" className="center"/>
                                 <div className="dog__breed">Breed: {favDog.breed.breed_type}</div>
                                 <div className="dog__kennel">Kennel: {favDog.kennel.name}</div>
                                 <button onClick={() => handleRemoval(favDog.id)}>

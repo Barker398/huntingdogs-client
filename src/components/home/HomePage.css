@@ -15,7 +15,7 @@ h4 {
     width: 50%;
 }
 .bg_image{
-    background-image: url('/home/sam_barker/workspace/huntingdogs-client/public/images/huntingdog.jpg');
+    background-image: url('/home/sam_barker/workspace/huntingdogs-client/public/images/dog-background.jpg');
     background-size: cover;
     width: 100%;
     height: auto;

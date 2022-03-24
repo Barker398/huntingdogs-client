@@ -39,7 +39,7 @@ export const KennelDetail = () => {
                 <div>
                     <img src={dog.image_url} className="center" />
                     {dog.traits.map(trait => {
-                        return <h4>{trait.description}</h4>
+                        return <h4>Dog Traits: {trait.description}</h4>
                     })}
                     <h4>Type of Hunting: {dog.breed.hunting_type}</h4>
                     <h4>Breed: {dog.breed.breed_type}</h4>
